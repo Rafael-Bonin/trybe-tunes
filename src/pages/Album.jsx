@@ -37,5 +37,9 @@ export default class Album extends React.Component {
 }
 
 Album.propTypes = {
-  match: PropTypes.objectOf(PropTypes.object).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
