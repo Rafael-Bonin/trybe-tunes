@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 export default class Album extends React.Component {
   constructor() {
@@ -21,6 +22,7 @@ export default class Album extends React.Component {
     const { match: { params: { id } } } = this.props;
     const musics = await getMusics(id);
     this.setState({ allData: musics, ready: true });
+    await getFavoriteSongs();
   }
 
   render() {
